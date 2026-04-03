@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string("date");
             $table->string("amount");
             $table->string("status");
-            $table->unsignedBigInteger('leas_id');
+            $table->unsignedBigInteger('lease_id');
             $table->foreign('leas_id')->references('id')->on('leases');
         });
     }
