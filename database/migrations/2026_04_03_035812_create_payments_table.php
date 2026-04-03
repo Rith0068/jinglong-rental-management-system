@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string("amount");
             $table->string("status");
             $table->unsignedBigInteger('lease_id');
-            $table->foreign('leas_id')->references('id')->on('leases');
+            $table->foreign('lease_id')->references('id')->on('leases');
         });
     }
 
