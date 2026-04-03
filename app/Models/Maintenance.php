@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Maintenance extends Model
 {
     //
-    protected $table = 'maintenances';
+    protected $table = 'maintenance_requests';
 
     protected $primaryKey = 'id';
 
