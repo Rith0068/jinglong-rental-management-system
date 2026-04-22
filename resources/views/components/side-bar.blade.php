@@ -29,7 +29,7 @@
     <!-- Nav -->
     <nav class="flex-1 flex flex-col gap-4 px-2 py-3">
 
-        <a href="#" onclick="setActive(this)"
+        <a href="/dasboard" onclick="setActive(this)"
             class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-lg text-[18px] font-medium text-blue-700 bg-blue-50 transition-colors whitespace-nowrap">
             <span class="flex-shrink-0 w-5 h-5 flex items-center justify-center">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
