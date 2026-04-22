@@ -9,15 +9,14 @@
 </head>
 <body>
     <div class="flex">
-        <div class="block m-auto w-[440px] border-black shadow-2xl rounded-lg mt-[100px] h-[550px] bg-white-100">
+        <div class="block m-auto w-[440px] border-black shadow-2xl rounded-lg mt-[100px] h-[620px] bg-white-100">
             <div class="flex">
                 <h2 class="pl-[50px] text-[32px] font-bold pt-[30px]">
-                    Welcome To JingLong
+                    Create an Account 
                 </h2>
             </div>
             <div class="flex font-bold text[16px] text-gray-400">
                 <p class="pl-[50px]">
-                    Regiser you account
                 </p>
             </div>
             <form action="" class="pl-[50px]">
@@ -35,6 +34,12 @@
                 </label>
                 <label>
                     <p class="font-bold font-bold text[16px] mt-[20px]">
+                        Phone Number
+                    </p>
+                    <input type="text" placeholder="fill your name nere" class="border-gray-800 text-gray-500 p-[10px] w-[330px] border-gray-950 font-bold bg-gray-50 rounded-lg hover:text-gray-800 mt-1">
+                </label>
+                 <label>
+                    <p class="font-bold font-bold text[16px] mt-[20px]">
                         PassWord
                     </p>
                     <input type="password" id="password" placeholder="fill your password here" class="border-gray-800 text-gray-500 p-[10px] w-[330px] bg-gray-50 font-bold rounded-lg hover:text-gray-800 mt-1">
@@ -45,10 +50,10 @@
                 </div>
             </form>
             <div class="pl-[50px] flex justify-between pr-[50px]">
-                <button class="mt-[20px] bg-blue-400 p-[10px] w-[330px] rounded-lg shadow font-bold text[16px] text-white">
-                    Login
+                <button class="mt-[20px] bg-blue-400 p-[10px] w-[330px] rounded-lg shadow font-bold text[16px] text-white ">
+                    Sign Up 
                 </button>
-                
+
                 <script>
                     function showPassWord() {
                     var x = document.getElementById("password");
@@ -60,7 +65,7 @@
                     }
                 </script>
             </div>
-            <p class="font-bold pl-[50px] text[16px] mt-[20px]">Don't have account ? <a href="/signup" class="text-blue-500">Sign Up</a></p>
+            <p class="font-bold pl-[50px] text[16px] mt-[20px]">Aleady have account ? <a href="/login" class="text-blue-500">Login</a></p>
         </div>
     </div>
 </body>
