@@ -20,5 +20,8 @@
         <input type="text" name="description" placeholder="Enter your description"> 
         <button type="submit">Submit</button>
     </form>
+    @foreach($properties->take(3) as $property)
+    <h3>{{ $property->name }}</h3>
+    @endforeach
 </body>
 </html>
