@@ -10,8 +10,6 @@ class MaintenanceController extends Controller
     //
     public function index()
     {
-        $maintenances = Maintenance::all();{
-            return response()->json($maintenances);
-        }
+        return view("layouts.maintenances.index");
     }
 }

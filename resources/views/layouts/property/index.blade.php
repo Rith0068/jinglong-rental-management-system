@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>test lg </title>
 </head>
-<!-- <meta name="csrf-token" content="{{ csrf_token() }}"> -->
 
 <body>
     <form action="{{route('property.store')}}" method="POST">
@@ -20,5 +19,8 @@
         <input type="text" name="description" placeholder="Enter your description"> 
         <button type="submit">Submit</button>
     </form>
+    @foreach ($properties->take(2) as $property)
+        {{$property->name}}
+    @endforeach 
 </body>
 </html>
