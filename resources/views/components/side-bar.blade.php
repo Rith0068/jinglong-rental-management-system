@@ -48,7 +48,7 @@
                     <polyline points="9 22 9 12 15 12 15 22"/>
                 </svg>
             </span>
-            <span class="nav-label transition-opacity duration-200">Rooms & Buildings</span>
+            <span class="nav-label transition-opacity duration-200">Property</span>
         </a>
 
         <a href="#" onclick="setActive(this)"
