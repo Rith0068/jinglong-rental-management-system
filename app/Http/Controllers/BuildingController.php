@@ -1,16 +1,16 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Models\Property;
 use App\Models\ImgBuilding;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class BuildingController extends Controller
 {
     public function index()
     {
-        $properties = Property::with('images')->get();
+        $properties = Property::all();
         return view('layouts.building.index', compact('properties'));
     }
 
@@ -19,9 +19,9 @@ class BuildingController extends Controller
         $request->validate([
             'name'               => 'required|string',
             'address'            => 'required|string',
-            'price'              => 'required|numeric',
+            'price'              => 'required|string',
             'description'        => 'nullable|string',
-            'image'              => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'image'              => 'nullable|url',
             'number_of_building' => 'nullable|integer',
         ]);
 
@@ -32,12 +32,10 @@ class BuildingController extends Controller
             'description' => $request->description,
         ]);
 
-        if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('buildings', 'public');
-
+        if ($request->filled('image')) {
             ImgBuilding::create([
                 'property_id'        => $property->id,
-                'image'              => $imagePath,
+                'image'              => $request->image,
                 'number_of_building' => $request->number_of_building,
             ]);
         }
@@ -51,14 +49,40 @@ class BuildingController extends Controller
         return view('layouts.building.show', compact('property'));
     }
 
-    public function destroy($id)
+    // ✅ THIS WAS MISSING — add this method
+    public function edit($id)
+    {
+        $property = Property::with('images')->findOrFail($id);
+        return view('layouts.building.edit', compact('property'));
+    }
+
+    public function update(Request $request, $id)
     {
         $property = Property::findOrFail($id);
 
-        foreach ($property->images as $img) {
-            Storage::disk('public')->delete($img->image);
-        }
+        $request->validate([
+            'name'               => 'required|string',
+            'address'            => 'required|string',
+            'price'              => 'required|string',
+            'description'        => 'nullable|string',
+            'image'              => 'nullable|url',
+            'number_of_building' => 'nullable|integer',
+        ]);
 
+        $property->update([
+            'name'        => $request->name,
+            'address'     => $request->address,
+            'price'       => $request->price,
+            'description' => $request->description,
+        ]);
+
+        return redirect()->route('building.index')->with('success', 'Building updated!');
+    }
+
+    public function destroy($id)
+    {
+        $property = Property::findOrFail($id);
+        $property->images()->delete();
         $property->delete();
         return redirect()->route('building.index')->with('success', 'Building deleted!');
     }

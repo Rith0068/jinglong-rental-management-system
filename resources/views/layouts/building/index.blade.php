@@ -14,7 +14,7 @@
             <x-head-building />
 
             <button onclick="openModal()"
-                class="flex items-center gap-2 bg-gray-900 text-white px-5 py-2 mt-3 rounded-lg text-sm font-medium hover:bg-gray-700 transition active:scale-95">
+                class="flex items-center gap-2 bg-blue-500 text-white px-5 py-2 mt-3 rounded-lg text-sm font-bold hover:bg-blue-600 transition active:scale-95">
                 <span class="text-lg leading-none">+</span>
                 Add more building
             </button>
@@ -43,57 +43,58 @@
                 </button>
             </div>
 
-            <form action="{{ route('building.store') }}" method="POST" enctype="multipart/form-data" class="space-y-4 font-bold text-black">
+            <form action="{{ route('building.store') }}" method="POST" class="space-y-3">
                 @csrf
 
                 <div>
-                    <label class="block text-xs font-medium text-gray-500 uppercase tracking-wide mb-1.5">Name</label>
+                    <label class="text-sm font-medium text-gray-700">Title</label>
                     <input type="text" name="name" value="{{ old('name') }}" placeholder="e.g. Sunrise Tower"
-                        class="w-full px-3.5 py-2.5 text-sm bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-300 focus:bg-white transition">
+                        class="w-full mt-1 px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-gray-400">
+                    @error('name') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
                 </div>
 
                 <div>
-                    <label class="block text-xs font-medium text-gray-500 uppercase tracking-wide mb-1.5">Address</label>
+                    <label class="text-sm font-medium text-gray-700">Address</label>
                     <input type="text" name="address" value="{{ old('address') }}" placeholder="e.g. 12 Main St"
-                        class="w-full px-3.5 py-2.5 text-sm bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-300 focus:bg-white transition">
-                </div>
-
-                <div class="grid grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-xs font-medium text-gray-500 uppercase tracking-wide mb-1.5">Price</label>
-                        <input type="text" name="price" value="{{ old('price') }}" placeholder="0.00"
-                            class="w-full px-3.5 py-2.5 text-sm bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-300 focus:bg-white transition">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-medium text-gray-500 uppercase tracking-wide mb-1.5">Units</label>
-                        <input type="number" name="number_of_building" value="{{ old('number_of_building') }}" placeholder="0"
-                            class="w-full px-3.5 py-2.5 text-sm bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-300 focus:bg-white transition">
-                    </div>
+                        class="w-full mt-1 px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-gray-400">
+                    @error('address') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
                 </div>
 
                 <div>
-                    <label class="block text-xs font-medium text-gray-500 uppercase tracking-wide mb-1.5">Description</label>
+                    <label class="text-sm font-medium text-gray-700">Price</label>
+                    <input type="text" name="price" value="{{ old('price') }}" placeholder="0.00"
+                        class="w-full mt-1 px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-gray-400">
+                    @error('price') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
+                </div>
+
+                <div>
+                    <label class="text-sm font-medium text-gray-700">Description</label>
                     <textarea name="description" rows="3" placeholder="Describe the building…"
-                        class="w-full px-3.5 py-2.5 text-sm bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-300 focus:bg-white transition resize-y">{{ old('description') }}</textarea>
+                        class="w-full mt-1 px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-gray-400">{{ old('description') }}</textarea>
+                    @error('description') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
                 </div>
 
                 <div>
-                    <label class="block text-xs font-medium text-gray-500 uppercase tracking-wide mb-1.5">Image</label>
-                    <input type="file" name="image" accept="image/*" onchange="previewImage(event)"
-                        class="w-full px-3.5 py-2.5 text-sm bg-gray-50 border border-gray-200 rounded-lg cursor-pointer">
-                    <p class="text-xs text-gray-400 mt-1">JPG, PNG, WEBP — max 2MB</p>
-                    
-                    <img id="imgPreview" src="" alt=""
-                        class="hidden mt-3 w-full h-36 object-cover rounded-lg border border-gray-200">
+                    <label class="text-sm font-medium text-gray-700">Units</label>
+                    <input type="number" name="number_of_building" value="{{ old('number_of_building') }}" placeholder="0"
+                        class="w-full mt-1 px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-gray-400">
+                    @error('number_of_building') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
                 </div>
 
-                <div class="flex justify-end gap-3 pt-3 border-t border-gray-100">
+                <div>
+                    <label class="text-sm font-medium text-gray-700">Image URL</label>
+                    <input type="url" name="image" value="{{ old('image') }}" placeholder="https://example.com/image.jpg"
+                        class="w-full mt-1 px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-gray-400">
+                    @error('image') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
+                </div>
+
+                <div class="flex justify-end gap-2 pt-2">
                     <button type="button" onclick="closeModal()"
-                        class="px-5 py-2 text-sm font-medium text-gray-600 border border-gray-200 rounded-lg hover:bg-gray-50 transition">
+                        class="px-4 py-2 text-sm border border-gray-300 rounded-lg hover:bg-gray-50">
                         Cancel
                     </button>
                     <button type="submit"
-                        class="px-6 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg hover:bg-gray-700 active:scale-95 transition">
+                        class="px-4 py-2 text-sm text-white bg-gray-900 rounded-lg hover:bg-gray-700">
                         Submit
                     </button>
                 </div>
@@ -129,27 +130,16 @@
         document.body.style.overflow = '';
     }
 
-    // បិទ modal នៅពេលចុចក្រៅ
     function handleBackdrop(e) {
         if (e.target === document.getElementById('buildingModal')) {
             closeModal();
         }
     }
 
-    // បិទ modal នៅពេលចុច ESC
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') closeModal();
     });
 
-    // Preview image មុន submit
-    function previewImage(e) {
-        const file = e.target.files[0];
-        const preview = document.getElementById('imgPreview');
-        if (file) {
-            preview.src = URL.createObjectURL(file);
-            preview.classList.remove('hidden');
-        }
-    }
 </script>
 </body>
 </html>

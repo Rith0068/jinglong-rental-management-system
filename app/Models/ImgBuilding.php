@@ -13,7 +13,8 @@ class ImgBuilding extends Model
 
     protected $fillable = [
         'image',
-        'number_of_building'
+        'number_of_building',
+        'property_id'
     ];
     public function property()
     {
