@@ -13,4 +13,22 @@ class PropertyController extends Controller
         $properties = Property::all();
         return view('layouts.property.index',compact('properties'));
     }
+    public function store(Request $request){
+
+        $name = $request->name;
+        $address = $request->address;
+        $price = $request->price;
+        $description = $request->description;
+
+    Property::create(
+        [ 
+        'name' => $name,
+        'address' => $address,
+        'price' => $price,
+        'description' => $description,
+        ]
+    );
+
+        return redirect()->back();
+    }
 }
