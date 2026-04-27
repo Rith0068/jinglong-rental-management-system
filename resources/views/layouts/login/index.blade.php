@@ -45,9 +45,9 @@
                 </div>
             </form>
             <div class="pl-[50px] flex justify-between pr-[50px]">
-                <button class="mt-[20px] bg-blue-400 p-[10px] w-[330px] rounded-lg shadow font-bold text[16px] text-white">
+                <a href="{{route('dashboard')}}" class="text-center mt-[20px] bg-blue-400 p-[10px] w-[330px] rounded-lg shadow font-bold text[16px] text-white "m>
                     Login
-                </button>
+                </a>
                 
                 <script>
                     function showPassWord() {
