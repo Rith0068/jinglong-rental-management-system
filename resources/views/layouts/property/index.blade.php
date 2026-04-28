@@ -22,5 +22,9 @@
     @foreach ($properties->take(2) as $property)
         {{$property->name}}
     @endforeach 
+    @foreach($properties->take(3) as $property)
+    <h3>{{ $property->name }}</h3>
+    @endforeach
+
 </body>
 </html>

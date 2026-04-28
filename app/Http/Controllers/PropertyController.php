@@ -10,9 +10,10 @@ class PropertyController extends Controller
     //
     public function index()
     {
-        $properties = Property::all();
+        $properties = Property::paginate();
         return view('layouts.property.index',compact('properties'));
     }
+
     public function store(Request $request){
 
         $name = $request->name;

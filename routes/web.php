@@ -7,9 +7,9 @@ use App\Http\Controllers\MaintenanceController;
 use App\Http\Controllers\RentController;
 use App\Http\Controllers\SignupController;
 use App\Http\Controllers\PropertyController;
+use App\Http\Controllers\TenantController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\BuildingController;
-use App\Http\Controllers\TenantController;
 use App\Http\Controllers\PlaymentController;
 
 Route::get('/payment',[PlaymentController::class,'index']);
